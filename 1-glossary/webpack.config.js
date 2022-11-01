@@ -1,15 +1,35 @@
-require("dotenv").config();
+const webpack = require('webpack');
+const path = require('path');
 
-const path = require("path");
+const config = {
+  entry: [
+    './client/src/index.jsx'
+  ],
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        use: 'babel-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      }
+    ]
+  },
+  devServer: {
+    'static': {
+      directory: './dist'
+    }
+  },
+};
 
-/*
-  What should go here?  Great question!
-
-  Before you go to documentation, verify which version of webpack
-  you are using.
-
-  Use this config to copy production versions of your
-  index.html and styles.css to dist folder upon build
-*/
-
-module.exports = {};
+module.exports = config;
