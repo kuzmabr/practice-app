@@ -8,6 +8,9 @@
     "build": "npx webpack --mode development",
     "start": "node server/index.js"
   },
+  "browser": {
+    "[module-name]": false
+  },
   "license": "Unlicensed",
   "dependencies": {
     "@babel/core": "^7.14.6",
@@ -25,6 +28,7 @@
   },
   "devDependencies": {
     "html-loader": "^4.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "webpack-cli": "^4.10.0"
   }
 }

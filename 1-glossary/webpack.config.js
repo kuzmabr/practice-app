@@ -1,7 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 
 const config = {
+  watch: true,
   entry: [
     './client/src/index.jsx'
   ],
@@ -9,6 +12,12 @@ const config = {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Your custom title",
+      template: './client/src/index.html'
+    })
+],
   module: {
     rules: [
       {
