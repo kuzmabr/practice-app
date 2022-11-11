@@ -14,14 +14,12 @@ export const App = (props) => {
 
 
   const handleSubmit = () => {
-    setTimeout(() => {
     console.log('submitting');
     axios.post('/searchTerm', {
       definition: searchTerm
     })
     .then((response)=> {(setData(response.data));
     })
-  }, 500);
   };
 
 
@@ -32,7 +30,7 @@ export const App = (props) => {
       // handle error
       console.log(error);
     })
-  });
+  },[]);
 
   return (
     <div>

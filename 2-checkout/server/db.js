@@ -16,9 +16,31 @@ db.connectAsync()
   .then(() =>
     // Expand this table definition as needed:
     db.queryAsync(
-      "CREATE TABLE IF NOT EXISTS responses (id INT NOT NULL AUTO_INCREMENT PRIMARY KEY)"
-    )
+      "CREATE TABLE IF NOT EXISTS user (firstName VARCHAR(30),lastName VARCHAR(30),email_id VARCHAR(50),password VARCHAR(50),session_id VARCHAR(50) UNIQUE,PRIMARY KEY (session_id))"
+      )
   )
   .catch((err) => console.log(err));
 
+db.connectAsync()
+  .then(() => console.log(`Connected to MySQL as id: ${db.threadId}`))
+  .then(() =>
+    // Expand this table definition as needed:
+    db.queryAsync(
+      "CREATE TABLE IF NOT EXISTS address (stAddress1 VARCHAR (30),stAddress2 VARCHAR (10),city VARCHAR (50),state VARCHAR (50),zipCode INT NOT NULL,session_id VARCHAR(50) UNIQUE,PRIMARY KEY (session_id))"
+      )
+  )
+  .catch((err) => console.log(err));
+
+  db.connectAsync()
+  .then(() => console.log(`Connected to MySQL as id: ${db.threadId}`))
+  .then(() =>
+    // Expand this table definition as needed:
+    db.queryAsync(
+      "CREATE TABLE IF NOT EXISTS creditcard (cNum INT NOT NULL,cvv INT NOT NULL,billZip INT NOT NULL,session_id VARCHAR(50) UNIQUE,PRIMARY KEY (session_id))"
+      )
+  )
+  .catch((err) => console.log(err));
+
+
 module.exports = db;
+
