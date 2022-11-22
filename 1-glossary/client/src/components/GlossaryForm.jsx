@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export function GlossaryForm() {
+export function GlossaryForm(props) {
   const [termDef, setTerm] = useState({ term: "", definition: "" });
 
   const handleChange = (event) => {
@@ -17,9 +17,9 @@ export function GlossaryForm() {
     })
     .catch(function (error) {
       console.log(error);
-    });
+    })
+    .then(() => {props.getTerms()})
     event.preventDefault();
-
   };
   return (
     <form onSubmit={handleSubmit}>

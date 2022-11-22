@@ -8,7 +8,7 @@ export const GlossaryList = (props) => {
     <div>
     <h3>List of Terms</h3>
       {props.dbData.map((dataObj) => (
-        <GlossaryListItem dataObj={dataObj} />
+        <GlossaryListItem dataObj={dataObj} dbData={props.dbData} getTerms={props.getTerms} />
     ))}
     </div>
   )

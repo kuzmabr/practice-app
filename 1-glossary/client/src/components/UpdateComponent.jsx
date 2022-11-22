@@ -18,7 +18,9 @@ export const UpdateComponent = (props)=> {
     })
     .catch(function (error) {
       console.log(error);
-    });
+    })
+    . then(() => {props.setUpdate()})
+    .then(() => {props.getTerms()})
     event.preventDefault();
 
   };

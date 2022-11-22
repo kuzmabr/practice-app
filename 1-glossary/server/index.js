@@ -29,7 +29,7 @@ app.post('/terms', (req, res) => {
   console.log('inside app.post');
   var termObj = req.body.termDef;
   let newTerm = (data) => {
-    console.log('running')
+    console.log('running', data)
 
     const nextTerm = new TermModel({ term: data.term, definition: data.definition });
 
@@ -88,10 +88,10 @@ app.put('/update', (req, res) => {
 
 app.post('/searchTerm', (req, res) => {
   var searchTerm = req.body.definition
-  TermModel.find({definition: new RegExp('^'+searchTerm+'$', "i")})
+  console.log(searchTerm);
+  TermModel.find({definition: new RegExp(searchTerm, "i")})
   .then((data) => {res.send(data)});
 });
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

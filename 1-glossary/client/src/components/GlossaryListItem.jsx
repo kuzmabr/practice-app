@@ -6,17 +6,18 @@ export const GlossaryListItem = (props) => {
     var dataObj = props.dataObj;
     const [isShowingUpdate, setUpdate] = useState(false);
 
-    const handleClick = () => {
-        setUpdate(true);
+    const handleClick = (props) => {
+        setUpdate(true)
     }
   return (
     <div>
-        {isShowingUpdate && < UpdateComponent dataObj={dataObj}/>}
+        {isShowingUpdate && < UpdateComponent dataObj={dataObj} dbData={props.dbData} getTerms={props.getTerms} setUpdate={setUpdate} isShowingUpdate={isShowingUpdate}/>}
       {props.dataObj.term}: {props.dataObj.definition} {"   "}
       <button onClick={()=> {
         axios.post('/delete', {
             dataObj
           })
+          .then(() => {props.getTerms()})
       }} >
         Delete
       </button>{"   "}
